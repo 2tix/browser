@@ -1,0 +1,11 @@
+{
+  "name": "Browser",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "npm --prefix ./svelte/ run build && npm --prefix ./electron/ run dev",
+    "build": "npm --prefix ./svelte/ run build && npm --prefix ./electron/ run build",
+    "dev": "npm --prefix ./svelte/ run dev"
+  },
+  "dependencies": {
+  }
+}
