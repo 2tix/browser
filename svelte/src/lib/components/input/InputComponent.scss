@@ -1,5 +1,6 @@
 .input-component {
   margin: 5px;
+  text-align: center;
 
   .select {
     position: relative;
@@ -193,14 +194,15 @@
 
   input[type="text"] {
     border: none;
+    text-align: center;
     border-radius: 10px;
     padding: 15px 25px;
     font-size: 16px;
     width: 100%;
     box-sizing: border-box;
     position: relative;
-    background: linear-gradient(to left, rgb(37, 20, 75), rgb(15, 18, 77));
-
+    background: linear-gradient(to left, rgb(13, 6, 29), rgb(15, 18, 77));
+    color: white;
 
     &:focus {
       outline: none;
@@ -210,9 +212,11 @@
     &::placeholder {
       color: rgb(70, 70, 70);
       position: absolute;
+      text-align: center;
+      width: 100%;
       left: 0;
       top: 50%;
-      transform: translateX(25px) translateY(-50%);
+      transform: translateX(0) translateY(-50%);
       transition: transform 0.3s ease-in-out;
       -moz-transition: transform 0.3s ease-in-out;
       transition-delay: 0s; /* Default delay for non-Firefox browsers */

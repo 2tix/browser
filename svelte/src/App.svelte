@@ -7,20 +7,15 @@
 </script>
 
 <main>
-    <div class="sidebar">
-        <BubbleComponent height="97.5vh" margin="0" width="10vw">
-            ahoj
-        </BubbleComponent>
-    </div>
     <div>
         <div class="topbar">
-            <BubbleComponent height="5vh" margin="0" width="87.5vw">
-                <InputComponent data={{value: url, type: "text", label: "Browse the Web", change: v => url = v, submit: () => window.electronAPI.setUrl(url)}}/>
+            <BubbleComponent height="7.5vh" margin="0" inputWidth="98.33vw">
+                <InputComponent height="7.5vh" width="98.33vw" data={{value: url, type: "text", label: "Browse the Web", change: v => url = v, submit: () => window.electronAPI.setUrl(url)}}/>
             </BubbleComponent>
         </div>
 
         <div class="page">
-            <BubbleComponent height="91.25vh" margin="0" width="87.5vw">
+            <BubbleComponent height="88.75vh" margin="0" width="98.33vw">
             </BubbleComponent>
         </div>
     </div>

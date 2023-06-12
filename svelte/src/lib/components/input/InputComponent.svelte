@@ -2,7 +2,8 @@
     import "./InputComponent.scss";
     import {onMount} from "svelte";
 
-
+    export let height: string = "100%";
+    export let inputWidth: string = "100%";
     export let data: {
         type: "text",
         value: string,
@@ -69,9 +70,9 @@
         }
     });
 </script>
-<div class="input-component">
+<div style="height: {height}; width: {inputWidth}; margin: 0!important" class="input-component">
     {#if data.type === "text"}
-        <input placeholder={data.label} type="text" on:change={event => {
+        <input style="height: 100%" placeholder={data.label} type="text" on:change={event => {
             data.change(event.target.value);
         }} on:keypress={e => {data.change(e.target.value); if(e.code === "Enter") data.submit()}}
                value={data.value}/>
