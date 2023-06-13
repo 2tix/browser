@@ -1,4 +1,4 @@
-const {app, BrowserWindow, BrowserView, ipcMain} = require("electron");
+const {app, BrowserWindow, BrowserView, ipcMain, Menu} = require("electron");
 const path = require("path");
 const url = require("url");
 
@@ -6,7 +6,8 @@ const prod = false;
 let win;
 let src = "https://www.google.com/search?igu=1";
 let view;
-
+app.commandLine.appendSwitch('disable-site-isolation-trials');
+app.commandLine.appendSwitch('allow-file-access-from-files');
 const resize = () => {
     view.setBounds({
         x: Math.floor(win.getBounds().width * 0.00833),
@@ -21,6 +22,7 @@ const createWindow = () => {
         width: 800,
         height: 600,
         webPreferences: {
+            nodeIntegration: true,
             preload: path.join(__dirname, "preload.js"),
         }
     });
@@ -48,9 +50,7 @@ const createWindow = () => {
         }
     });
 
-    if (!prod) {
-        // win.webContents.openDevTools();
-    }
+    // win.webContents.openDevTools();
 
     win.on("closed", () => {
         win = null;
@@ -59,10 +59,13 @@ const createWindow = () => {
         resize();
     });
 
-    win.loadFile(path.join(__dirname, "..", "dist", "index.html"));
+    win.loadURL(`file://${__dirname}/build/index.html`);
 };
 
-app.on("ready", createWindow);
+app.on("ready", () => {
+    createWindow();
+    Menu.setApplicationMenu(Menu.buildFromTemplate([]));
+});
 
 app.on('window-all-closed', () => {
     if (process.platform !== "darwin") {

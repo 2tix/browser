@@ -4,6 +4,7 @@ import sass from 'sass';
 import sveltePreprocess from 'svelte-preprocess';
 import {build, defineConfig} from 'vite';
 
+
 export default defineConfig({
     plugins: [
         svelte({
@@ -16,6 +17,6 @@ export default defineConfig({
     ],
     base: './',
     build: {
-        outDir: '../dist',
-    }
+        outDir: '../electron/build',
+    },
 });
